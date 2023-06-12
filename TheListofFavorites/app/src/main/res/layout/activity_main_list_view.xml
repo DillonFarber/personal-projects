@@ -26,13 +26,14 @@
             app:srcCompat="@drawable/ic_launcher_foreground" />
 
         <LinearLayout
-            android:id="@+id/PopularGames"
+            android:id="@+id/PopularGamesLayout"
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:orientation="horizontal"
             android:layout_gravity="center">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/PopularGames"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
 
