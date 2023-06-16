@@ -3,6 +3,7 @@ package com.github.dillonfarber.thelistoffavorites
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.dillonfarber.thelistoffavorites.mediaTypes.Anime
@@ -22,6 +23,9 @@ class MainListView : AppCompatActivity()  {
         val popMovies: RecyclerView = findViewById(R.id.PopularMovies)
         val popTVShows: RecyclerView = findViewById(R.id.PopularTVShows)
         val popAnime: RecyclerView = findViewById(R.id.PopularAnime)
+
+        val igdbService: IGDBService = IGDBService.getInstance()
+        Toast.makeText(this@MainListView, igdbService.getBearerToken(), Toast.LENGTH_SHORT).show()
 
 
         val game: Game = Game("Ghost of Tsushima",

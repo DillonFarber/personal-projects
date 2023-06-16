@@ -1,5 +1,6 @@
 package com.github.dillonfarber.thelistoffavorites
 
+import android.widget.Toast
 import okhttp3.*
 import org.json.JSONObject
 
@@ -14,6 +15,8 @@ class OKHTTPService {
             .url(url)
             .headers(headers)
             .build()
+        print(request.toString())
+
 
         return try{
             val response = client.newCall(request).execute()
@@ -24,8 +27,7 @@ class OKHTTPService {
     }
 
 
-    fun postRequest(url: String, json: String, header: String): String? {
-        val body = RequestBody.create(JSON, json)
+    fun postRequest(url: String, body: FormBody, header: String): String? {
         val request = Request.Builder()
             .url(url)
             .post(body)
