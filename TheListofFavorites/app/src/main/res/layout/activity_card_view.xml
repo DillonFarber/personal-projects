@@ -6,10 +6,31 @@
     app:cardBackgroundColor="@android:color/darker_gray"
     app:cardElevation="8dp"
     app:cardUseCompatPadding="true">
+    <TextView
+        android:id="@+id/titleText"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <ImageView
         android:id="@+id/coverImage"
+        android:background="#0B2E44"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srcCompat="@drawable/game_controller" />
+        android:clickable="true"
+        app:srcCompat="@drawable/controller"
+        android:focusable="true"
+        android:contentDescription="@string/generic_cover_desc" />
+
+    <ImageButton
+        android:alpha=".50"
+        android:focusable="true"
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        app:srcCompat="@drawable/add_list"
+        />
+
+
 </androidx.cardview.widget.CardView>
