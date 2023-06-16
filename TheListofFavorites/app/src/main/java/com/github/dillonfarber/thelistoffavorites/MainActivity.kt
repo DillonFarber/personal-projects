@@ -19,8 +19,6 @@ class MainActivity : AppCompatActivity() {
             .getApplicationInfo(applicationContext.packageName, PackageManager.GET_META_DATA)
 
         loginBtn.setOnClickListener{
-
-            Toast.makeText(this@MainActivity,ai.metaData["KEY"].toString(), Toast.LENGTH_SHORT).show()
             val intent = Intent(this, MainListView::class.java)
             startActivity(intent)
         }

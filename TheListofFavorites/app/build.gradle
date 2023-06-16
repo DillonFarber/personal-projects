@@ -13,8 +13,8 @@ android {
         targetSdk 33
         versionCode 1
         versionName "1.0"
-        buildConfigField("String", "client_id","wdcga06wfwk5r6ioi0el9i89sstg6m" )
-        buildConfigField("String", "client_secret", "ga6xcepjh9tuucl4kjkwfof9he0bx6")
+//        buildConfigField("String", "client_id","wdcga06wfwk5r6ioi0el9i89sstg6m" )
+//        buildConfigField("String", "client_secret", "ga6xcepjh9tuucl4kjkwfof9he0bx6")
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
