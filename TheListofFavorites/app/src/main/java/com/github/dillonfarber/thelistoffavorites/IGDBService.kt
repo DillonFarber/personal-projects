@@ -1,9 +1,10 @@
 package com.github.dillonfarber.thelistoffavorites
 
-import okhttp3.FormBody
-import okhttp3.Headers
+import android.util.Log
+import okhttp3.*
 import okhttp3.internal.http2.Header
 import org.json.JSONObject
+import java.io.IOException
 
 /**
  * IGDBService class is created to deal with API calls to the IGDB API, Controlling the
@@ -25,7 +26,8 @@ class IGDBService private constructor() {
         }
     }
 
-    private val client: OKHTTPService = OKHTTPService()
+
+    private val client: OkHttpClient = OkHttpClient()
     private var bearerTokens: JSONObject?
     private val IGDBurl: String = "https://api.igdb.com/v4"
     private val twitterURL: String = "https://id.twitch.tv/oauth2/token"
@@ -43,7 +45,25 @@ class IGDBService private constructor() {
     private var bearerTokenFlag: Boolean = true
 
     private fun BearerToken(): JSONObject? {
-        return this.client.postRequest(twitterURL, body)?.let { JSONObject(it) }
+        val request = Request.Builder()
+            .url(twitterURL)
+            .post(body)
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                e.printStackTrace()
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                response.use {
+                    if (!response.isSuccessful) throw IOException("Unexpected code $response")
+                    bearerTokens = response.body()!!.toString().let{ JSONObject(it) }
+                    Log.i("Task",response.body()!!.string())
+                }
+            }
+        })
+        return
     }
     fun getBearerToken(): String?{
         return this.bearerTokens.toString()
