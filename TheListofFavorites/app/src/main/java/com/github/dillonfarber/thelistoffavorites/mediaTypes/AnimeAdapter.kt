@@ -37,4 +37,3 @@ class AnimeAdapter(private val context: Context, animeArrayList: ArrayList<Anime
         this.animeArrayList = animeArrayList
     }
 }
-

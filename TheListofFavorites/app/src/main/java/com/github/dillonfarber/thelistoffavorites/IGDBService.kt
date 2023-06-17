@@ -30,17 +30,20 @@ class IGDBService private constructor() {
     private val IGDBurl: String = "https://api.igdb.com/v4"
     private val twitterURL: String = "https://id.twitch.tv/oauth2/token"
     private val body: FormBody = FormBody.Builder()
-        .add("grant_type", "client_credentials")
-        .build()
-    private val headers: Headers = Headers.Builder()
         .add("client_id" , "wdcga06wfwk5r6ioi0el9i89sstg6m")
         .add("client_secret" ,"ga6xcepjh9tuucl4kjkwfof9he0bx6")
         .add("grant_type", "client_credentials")
         .build()
+    private val requestHeader: Headers = Headers.Builder()
+        .add("client_id" , "wdcga06wfwk5r6ioi0el9i89sstg6m")
+        .add("client_secret" ,"ga6xcepjh9tuucl4kjkwfof9he0bx6")
+        .add("grant_type", "client_credentials")
+        .build()
+
     private var bearerTokenFlag: Boolean = true
 
     private fun BearerToken(): JSONObject? {
-        return this.client.getRequest(twitterURL, headers)?.let { JSONObject(it) }
+        return this.client.postRequest(twitterURL, body)?.let { JSONObject(it) }
     }
     fun getBearerToken(): String?{
         return this.bearerTokens.toString()
@@ -52,7 +55,6 @@ class IGDBService private constructor() {
             this.bearerTokenFlag = false
         }
         print(bearerTokens.toString())
-
 
     }
 

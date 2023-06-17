@@ -15,13 +15,9 @@ class MainActivity : AppCompatActivity() {
 
         val loginBtn: Button = findViewById(R.id.loginBtn)
 
-        val ai: ApplicationInfo = applicationContext.packageManager
-            .getApplicationInfo(applicationContext.packageName, PackageManager.GET_META_DATA)
-
         loginBtn.setOnClickListener{
             val intent = Intent(this, MainListView::class.java)
             startActivity(intent)
         }
-
     }
 }
