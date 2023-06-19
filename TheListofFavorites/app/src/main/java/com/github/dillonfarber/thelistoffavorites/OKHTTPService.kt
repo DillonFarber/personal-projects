@@ -11,7 +11,7 @@ class OKHTTPService {
 
 
 
-    fun getRequest(url: String, headers: Headers): String? {
+    fun getRequest(url: String, headers: Headers) {
         val request = Request.Builder()
             .url(url)
             .headers(headers)
@@ -29,42 +29,5 @@ class OKHTTPService {
                 }
             }
         })
-
     }
-
-
-    fun postRequest(url: String, body: FormBody): String? {
-        val request = Request.Builder()
-            .url(url)
-            .post(body)
-            .build()
-        val data:
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                e.printStackTrace()
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                response.use {
-                    if (!response.isSuccessful) throw IOException("Unexpected code $response")
-
-                    for ((name, value) in response.headers) {
-                        println("$name: $value")
-                    }
-
-                    println(response.body!!.string())
-                }
-            }
-        })
-    }
-
-    override fun close() {
-        client
-    }
-
-    override fun isOpen(): Boolean {
-        TODO("Not yet implemented")
-    }
-
-
 }
