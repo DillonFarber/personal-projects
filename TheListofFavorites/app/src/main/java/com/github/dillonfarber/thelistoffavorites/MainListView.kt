@@ -26,7 +26,14 @@ class MainListView : AppCompatActivity()  {
         Toast.makeText(this@MainListView, igdbService.getBearerToken().toString(), Toast.LENGTH_SHORT).show()
 
 
-        val b = JSONObject(""""name": "zelda" """)
+        val params = "name \"zelda\""
+        var bodyMap = igdbService.bodyMap
+        bodyMap["name"] = "name"
+        bodyMap["cover"] = "cover"
+        bodyMap["developer"] = ""
+        bodyMap["aggregated_rating_count"] = "*"
+        bodyMap["fields age_ratings"] = "*"
+        val games = igdbService.gamesLookup(params)
 
         val game = Game("Ghost of Tsushima",
             "RPG",

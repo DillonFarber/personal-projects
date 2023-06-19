@@ -29,7 +29,7 @@ class IGDBService private constructor() {
 
 
     private val client: OkHttpClient = OkHttpClient()
-    private var bearerTokens: JSONArray? = null
+    private var bearerTokens: JSONObject? = null
     private val IGDBurl: String = "https://api.igdb.com/v4"
     private val twitterURL: String = "https://id.twitch.tv/oauth2/token"
     private val body: FormBody = FormBody.Builder()
@@ -37,11 +37,7 @@ class IGDBService private constructor() {
         .add("client_secret" ,"ga6xcepjh9tuucl4kjkwfof9he0bx6")
         .add("grant_type", "client_credentials")
         .build()
-    private val requestHeader: Headers = Headers.Builder()
-        .add("client_id" , "wdcga06wfwk5r6ioi0el9i89sstg6m")
-        .add("client_secret" ,"ga6xcepjh9tuucl4kjkwfof9he0bx6")
-        .add("grant_type", "client_credentials")
-        .build()
+
     var bodyMap = mutableMapOf("fields age_ratings" to "",
         "aggregated_rating_count" to "", "alternative_names" to "", "artworks" to "",
         "bundles" to "", "category" to "", "checksum" to "", "collection" to "", "cover" to "",
@@ -74,14 +70,14 @@ class IGDBService private constructor() {
             override fun onResponse(call: Call, response: Response) {
                 response.use {
                     if (!response.isSuccessful) throw IOException("Unexpected code $response")
-                    bearerTokens = response.body()!!.toString().let {JSONArray(it)}
+                    bearerTokens = response.body()!!.toString().let {JSONObject(it)}
                     Log.i("Task",response.body()!!.string())
                 }
             }
         })
 
     }
-    fun getBearerToken(): JSONArray? {
+    fun getBearerToken(): JSONObject? {
         return this.bearerTokens
     }
 
@@ -93,23 +89,30 @@ class IGDBService private constructor() {
         Log.i("Task", bearerTokens.toString())
 
     }
+    private val requestHeader: Headers = Headers.Builder()
+        .add("client_id" , "wdcga06wfwk5r6ioi0el9i89sstg6m")
+        .add("client_secret" ,"ga6xcepjh9tuucl4kjkwfof9he0bx6")
+        .add("Authorization", "bearer ${bearerTokens.get("access_token")}")
+        .build()
 
-    fun gamesLookup(bodyMap: MutableMap<String, String?>, parameters: String?, ): JSONArray? {
+    fun gamesLookup(parameters: String, ): JSONArray? {
         val url = this.IGDBurl + "/games"
-        var builder = FormBody.Builder()
+        val builder = FormBody.Builder()
+        var params2 = " "
         var games: JSONArray? = null
         for((key, value) in bodyMap){
             if(value != ""){
-                builder.add(key, value!!)
+                params2 += "$value, "
             }
         }
+        builder.add("field", params2)
         builder.add("where", parameters)
+        builder.add("limit", "25")
 
         val requestBody = builder.build()
         val request = Request.Builder()
             .url(url)
             .post(requestBody)
-            .post(b)
             .build()
 
         client.newCall(request).enqueue(object : Callback {
