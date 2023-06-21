@@ -92,7 +92,7 @@ class IGDBService private constructor() {
     private val requestHeader: Headers = Headers.Builder()
         .add("client_id" , "wdcga06wfwk5r6ioi0el9i89sstg6m")
         .add("client_secret" ,"ga6xcepjh9tuucl4kjkwfof9he0bx6")
-        .add("Authorization", "bearer ${bearerTokens.get("access_token")}")
+        .add("Authorization", "bearer ${bearerTokens!!.get("access_token")}")
         .build()
 
     fun gamesLookup(parameters: String, ): JSONArray? {

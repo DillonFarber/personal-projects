@@ -22,18 +22,19 @@ class MainListView : AppCompatActivity()  {
         val popTVShows: RecyclerView = findViewById(R.id.PopularTVShows)
         val popAnime: RecyclerView = findViewById(R.id.PopularAnime)
 
-        val igdbService = IGDBService.getInstance()
-        Toast.makeText(this@MainListView, igdbService.getBearerToken().toString(), Toast.LENGTH_SHORT).show()
+//        val igdbService = IGDBService.getInstance()
+//        Toast.makeText(this@MainListView, igdbService.getBearerToken().toString(), Toast.LENGTH_SHORT).show()
 
 
-        val params = "name \"zelda\""
-        var bodyMap = igdbService.bodyMap
-        bodyMap["name"] = "name"
-        bodyMap["cover"] = "cover"
-        bodyMap["developer"] = ""
-        bodyMap["aggregated_rating_count"] = "*"
-        bodyMap["fields age_ratings"] = "*"
-        val games = igdbService.gamesLookup(params)
+//        val params = "name \"zelda\""
+//        var bodyMap = igdbService.bodyMap
+//        bodyMap["name"] = "name"
+//        bodyMap["cover"] = "cover"
+//        bodyMap["developer"] = ""
+//        bodyMap["aggregated_rating_count"] = "*"
+//        bodyMap["fields age_ratings"] = "*"
+//
+//        val games = igdbService.gamesLookup(params)
 
         val game = Game("Ghost of Tsushima",
             "RPG",
