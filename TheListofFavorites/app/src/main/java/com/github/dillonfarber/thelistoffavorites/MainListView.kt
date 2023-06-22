@@ -3,10 +3,14 @@ package com.github.dillonfarber.thelistoffavorites
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.dillonfarber.thelistoffavorites.mediaTypes.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import org.json.JSONObject
 import kotlin.collections.ArrayList
 
@@ -22,20 +26,23 @@ class MainListView : AppCompatActivity()  {
         val popTVShows: RecyclerView = findViewById(R.id.PopularTVShows)
         val popAnime: RecyclerView = findViewById(R.id.PopularAnime)
 
-//        val igdbService = IGDBService.getInstance()
-//        Toast.makeText(this@MainListView, igdbService.getBearerToken().toString(), Toast.LENGTH_SHORT).show()
 
+        val igdbService = IGDBService.getInstance()
+        Toast.makeText(this@MainListView, igdbService.getBearerToken(), Toast.LENGTH_SHORT).show()
 
-//        val params = "name \"zelda\""
+//        val params = "search \"zelda\""
 //        var bodyMap = igdbService.bodyMap
 //        bodyMap["name"] = "name"
 //        bodyMap["cover"] = "cover"
-//        bodyMap["developer"] = ""
-//        bodyMap["aggregated_rating_count"] = "*"
-//        bodyMap["fields age_ratings"] = "*"
+//        bodyMap["developer"] = "developer"
+//        bodyMap["aggregated_rating_count"] = "aggregated_rating_count"
+//        bodyMap["age_ratings"] = "age_ratings"
 //
-//        val games = igdbService.gamesLookup(params)
-
+//        val games = igdbService.gamesLookup(params, bodyMap)
+//
+//        if (games != null) {
+//            Toast.makeText(this@MainListView, JSONObject(games.get(0).toString())["name"].toString(), Toast.LENGTH_SHORT).show()
+//        }
         val game = Game("Ghost of Tsushima",
             "RPG",
             50.0,
@@ -115,7 +122,5 @@ class MainListView : AppCompatActivity()  {
         val tvShowsLayoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         popTVShows.layoutManager = tvShowsLayoutManager
         popTVShows.adapter = tvShowsAdapter
-
-
     }
 }

@@ -1,11 +1,14 @@
 package com.github.dillonfarber.thelistoffavorites
 
 import android.util.Log
+//import com.github.kittinunf.fuel.httpGet
+//import com.github.kittinunf.fuel.httpPost
+//import com.github.kittinunf.result.Result
 import okhttp3.*
-import okhttp3.internal.http2.Header
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
+
 
 /**
  * IGDBService class is created to deal with API calls to the IGDB API, Controlling the
@@ -27,14 +30,13 @@ class IGDBService private constructor() {
         }
     }
 
-
     private val client: OkHttpClient = OkHttpClient()
     private var bearerTokens: JSONObject? = null
     private val IGDBurl: String = "https://api.igdb.com/v4"
     private val twitterURL: String = "https://id.twitch.tv/oauth2/token"
-    private val body: FormBody = FormBody.Builder()
+    private val body = FormBody.Builder()
         .add("client_id" , "wdcga06wfwk5r6ioi0el9i89sstg6m")
-        .add("client_secret" ,"ga6xcepjh9tuucl4kjkwfof9he0bx6")
+        .add("client_secret" ,"fpsmypfczeipp04idqcv4efhwecqby")
         .add("grant_type", "client_credentials")
         .build()
 
@@ -56,51 +58,45 @@ class IGDBService private constructor() {
 
     private var bearerTokenFlag: Boolean = true
 
-    private fun BearerToken() {
+    private fun bearerToken() {
         val request = Request.Builder()
+//            .headers(body)
             .url(twitterURL)
             .post(body)
             .build()
 
-        client.newCall(request).enqueue(object : Callback {
+        client.newCall(request).enqueue(object : Callback{
             override fun onFailure(call: Call, e: IOException) {
                 e.printStackTrace()
             }
 
             override fun onResponse(call: Call, response: Response) {
-                response.use {
-                    if (!response.isSuccessful) throw IOException("Unexpected code $response")
-                    bearerTokens = response.body()!!.toString().let {JSONObject(it)}
-                    Log.i("Task",response.body()!!.string())
-                }
+                val tokens = response.body()?.string()
+                bearerTokens = tokens?.let { JSONObject(it) }
+                Log.i("response", bearerTokens.toString())
             }
+
         })
 
-    }
-    fun getBearerToken(): JSONObject? {
-        return this.bearerTokens
-    }
-
-    init {
-        BearerToken()
-        if(bearerTokens != null){
-            this.bearerTokenFlag = false
-        }
-        Log.i("Task", bearerTokens.toString())
 
     }
-    private val requestHeader: Headers = Headers.Builder()
-        .add("client_id" , "wdcga06wfwk5r6ioi0el9i89sstg6m")
-        .add("client_secret" ,"ga6xcepjh9tuucl4kjkwfof9he0bx6")
-        .add("Authorization", "bearer ${bearerTokens!!.get("access_token")}")
-        .build()
+    fun getBearerToken(): String? {
+        Log.i("getBearer", bearerTokens?.get("token_type").toString())
+        return bearerTokens?.get("token_type")?.toString()
+    }
 
-    fun gamesLookup(parameters: String, ): JSONArray? {
+
+    fun gamesLookup(parameters: String, bm: Map<String, String>): JSONArray? {
+        val requestHeader: Headers = Headers.Builder()
+            .add("client_id" , "wdcga06wfwk5r6ioi0el9i89sstg6m")
+            .add("client_secret" ,"ga6xcepjh9tuucl4kjkwfof9he0bx6")
+            .add("Authorization", "bearer ${bearerTokens!!["access_token"]}")
+            .build()
         val url = this.IGDBurl + "/games"
         val builder = FormBody.Builder()
         var params2 = " "
         var games: JSONArray? = null
-        for((key, value) in bodyMap){
+        for((_, value) in bm){
             if(value != ""){
                 params2 += "$value, "
             }
@@ -124,10 +120,16 @@ class IGDBService private constructor() {
                 response.use {
                     if (!response.isSuccessful) throw IOException("Unexpected code $response")
                     games = JSONArray(response.body()!!)
-                    Log.i("Task", response.body()!!.string())
                 }
             }
         })
         return games
+    }
+
+    init {
+        bearerToken()
+        if(bearerTokens != null){
+            this.bearerTokenFlag = false
+        }
     }
 }
