@@ -1,6 +1,7 @@
 package com.github.dillonfarber.thelistoffavorites
 
 import android.util.Log
+import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.awaitAll
 //import com.github.kittinunf.fuel.httpGet
 //import com.github.kittinunf.fuel.httpPost
@@ -16,7 +17,7 @@ import java.io.IOException
  * information for the application. Created to be a singleton class, using a double locking
  * of the class for no overlap in calls to API.
  * **/
-class IGDBService private constructor() {
+class IGDBService private constructor() : ViewModel() {
     companion object{
         @Volatile
         private var instance: IGDBService? = null
