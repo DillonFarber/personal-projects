@@ -1,6 +1,7 @@
 package com.github.dillonfarber.thelistoffavorites
 
 import android.util.Log
+import kotlinx.coroutines.awaitAll
 //import com.github.kittinunf.fuel.httpGet
 //import com.github.kittinunf.fuel.httpPost
 //import com.github.kittinunf.result.Result
@@ -80,7 +81,7 @@ class IGDBService private constructor() {
 
 
     }
-    fun getBearerToken(): String? {
+    suspend fun getBearerToken(): String? {
         Log.i("getBearer", bearerTokens?.get("token_type").toString())
         return bearerTokens?.get("token_type")?.toString()
     }

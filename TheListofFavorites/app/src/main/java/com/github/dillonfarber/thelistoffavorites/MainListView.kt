@@ -1,6 +1,5 @@
 package com.github.dillonfarber.thelistoffavorites
 
-
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
@@ -14,7 +13,6 @@ import kotlinx.coroutines.runBlocking
 import org.json.JSONObject
 import kotlin.collections.ArrayList
 
-
 class MainListView : AppCompatActivity()  {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,10 +24,10 @@ class MainListView : AppCompatActivity()  {
         val popTVShows: RecyclerView = findViewById(R.id.PopularTVShows)
         val popAnime: RecyclerView = findViewById(R.id.PopularAnime)
 
-
         val igdbService = IGDBService.getInstance()
-        Toast.makeText(this@MainListView, igdbService.getBearerToken(), Toast.LENGTH_SHORT).show()
 
+//        Toast.makeText(this@MainListView, igdbService.getBearerToken(), Toast.LENGTH_SHORT).show()
+//
 //        val params = "search \"zelda\""
 //        var bodyMap = igdbService.bodyMap
 //        bodyMap["name"] = "name"
@@ -43,6 +41,7 @@ class MainListView : AppCompatActivity()  {
 //        if (games != null) {
 //            Toast.makeText(this@MainListView, JSONObject(games.get(0).toString())["name"].toString(), Toast.LENGTH_SHORT).show()
 //        }
+
         val game = Game("Ghost of Tsushima",
             "RPG",
             50.0,
