@@ -2,11 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission
-        android:name="android.permission.INTERNET"/>
-    <uses-permission
-        android:name="android.permission.ACCESS_NETWORK_STATE"/>
-
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -16,15 +13,46 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.TheListOfFavorites"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".BookCardActivity"
+            android:exported="false"
+            android:label="@string/title_activity_book_card"
+            android:theme="@style/Theme.TheListOfFavorites" />
+        <activity
+            android:name=".TVShowCard"
+            android:exported="false"
+            android:label="@string/title_activity_tvshow_card"
+            android:theme="@style/Theme.TheListOfFavorites" />
+        <activity
+            android:name=".MovieCardActivity"
+            android:exported="false"
+            android:label="@string/title_activity_movie_card"
+            android:theme="@style/Theme.TheListOfFavorites" />
+        <activity
+            android:name=".ui.SimilarGamesGrid"
+            android:exported="false"
+            android:label="@string/title_activity_similar_games_grid"
+            android:theme="@style/Theme.TheListOfFavorites" />
+        <activity
+            android:name=".WebsiteViewActivity"
+            android:exported="false"
+            android:label="@string/title_activity_website_view"
+            android:theme="@style/Theme.TheListOfFavorites" />
+        <activity
+            android:name=".PlaygroundActivity"
+            android:exported="false"
+            android:label="@string/title_activity_playground"
+            android:theme="@style/Theme.TheListOfFavorites" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CardBlowupActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainListView"
-            android:exported="false" />
-        <activity
-            android:name=".CardView"
-            android:exported="false" />
-        <activity
-            android:name=".login"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -35,5 +63,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
+
 </manifest>

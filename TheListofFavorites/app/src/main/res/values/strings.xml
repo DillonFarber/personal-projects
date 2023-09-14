@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">The List of Favorites</string>
     <string name="generic_cover_desc">generic cover for video game</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="coverimg_desc">The cover art of the game</string>
+    <string name="summary">Summary</string>
+    <string name="addcollection">addCollection</string>
+    <string name="backgroundImgDesc">Background image of game</string>
+    <string name="title">Title</string>
+    <string name="title_activity_playground">PlaygroundActivity</string>
+    <string name="title_activity_website_view">WebsiteViewActivity</string>
+    <string name="title_activity_similar_games_grid">SimilarGamesGrid</string>
+    <string name="title_activity_movie_card">MovieCardActivity</string>
+    <string name="title_activity_tvshow_card">TVShowCard</string>
+    <string name="title_activity_book_card">BookCardActivity</string>
 </resources>

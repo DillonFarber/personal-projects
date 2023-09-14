@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CardBlowupActivity"
+    android:background="@color/cardview_dark_background">
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--    <VideoView-->
+    <!--        android:id="@+id/videoView"-->
+    <!--        android:layout_width="384dp"-->
+    <!--        android:layout_height="227dp"-->
+    <!--        android:visibility="invisible"-->
+    <!--        app:layout_constraintEnd_toEndOf="@+id/blowupBackground"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+
+<!--<ImageView-->
+<!--android:id="@+id/blowupBackground"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent"-->
+<!--android:contentDescription="@string/backgroundImgDesc"-->
+<!--android:paddingBottom="1dp"-->
+<!--android:visibility="visible"-->
+<!--app:layout_constraintTop_toTopOf="parent"-->
+<!--app:srcCompat="@drawable/ghost_of_tsushima_logo_4k_p1_240x320"-->
+<!--tools:layout_editor_absoluteX="-4dp" />-->
+
+<!--<ScrollView-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent"-->
+<!--tools:layout_editor_absoluteX="1dp"-->
+<!--tools:layout_editor_absoluteY="1dp">-->
+
+<!--<GridLayout-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content">-->
+<!--    <ImageView-->
+<!--        android:id="@+id/blowupCoverImg"-->
+<!--        android:layout_width="137dp"-->
+<!--        android:layout_height="171dp"-->
+<!--        android:layout_gravity="start|bottom"-->
+<!--        android:contentDescription="@string/coverimg_desc"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/blowupBackground"-->
+<!--        app:layout_constraintLeft_toLeftOf="@+id/blowupBackground"-->
+<!--        app:srcCompat="@drawable/controller" />-->
+
+
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical">-->
+
+
+
+
+<!--    <ImageView-->
+<!--        android:id="@+id/addCollection"-->
+<!--        android:layout_width="64dp"-->
+<!--        android:layout_height="61dp"-->
+<!--        android:layout_gravity="end|bottom"-->
+<!--        android:contentDescription="@string/addcollection"-->
+<!--        app:srcCompat="@drawable/buttongeneral" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/titleName"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="43dp"-->
+<!--        android:fontFamily="@font/audiowide"-->
+<!--        android:text="@string/title"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="25sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:visibility="visible"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/blowupBackground" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/Platforms"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:padding="2dp"-->
+<!--        android:text="Platform(s):"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textStyle="italic" />-->
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/summary"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="69dp"-->
+<!--        android:text="@string/summary"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="18sp" />-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/genrePlatformID"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="105dp"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:weightSum="2">-->
+
+
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/genreLayout"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:orientation="vertical">-->
+<!--            <ImageView-->
+<!--                android:id="@+id/ratingImg"-->
+<!--                android:layout_width="64dp"-->
+<!--                android:layout_height="64dp"-->
+<!--                app:srcCompat="@drawable/unknown" />-->
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/platfomrLayout"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/platformsEdit"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="2dp"-->
+<!--                android:text="platform"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="16sp" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/genre"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="2dp"-->
+<!--                android:text="Genre(s): "-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textStyle="italic" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/genreEdit"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="2dp"-->
+<!--                android:text="genre"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="16sp" />-->
+<!--        </LinearLayout>-->
+
+<!--    </LinearLayout>-->
+
+<!--</GridLayout>-->
+
+<!--</ScrollView>-->
